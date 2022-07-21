@@ -46,7 +46,7 @@ class AuthController extends GetxController {
 
     if (phoneNo.length == 13) {
       // print("phone No: ${phoneNo}");
-      verifyPhone(phoneNumberController.text);
+      verifyPhone(phoneNo);
     } else {
       Fluttertoast.showToast(msg: 'Phone No Should be 10 digit no.');
     }
@@ -66,7 +66,7 @@ class AuthController extends GetxController {
           codeSent: (String verificationId, int? resendToken) async {
             verificationID.value = verificationId;
           },
-          timeout: Duration(seconds: 60),
+          // timeout: Duration(seconds: 60),
           codeAutoRetrievalTimeout: (String verificationId) {});
       EasyLoading.dismiss();
       focus.removeListener(_autofillNo);
@@ -103,6 +103,6 @@ class AuthController extends GetxController {
       SetOptions(merge: true),
     );
 
-    Get.offAllNamed('HOME');
+    Get.offAllNamed('DETAILS_USER');
   }
 }

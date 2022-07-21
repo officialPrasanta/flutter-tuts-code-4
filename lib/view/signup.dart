@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:four/controller/auth_controller.dart';
+import 'package:four/view/compenents/bbutton.dart';
 import 'package:get/get.dart';
 
 class SignUp extends StatelessWidget {
@@ -9,7 +10,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController ac = Get.put(AuthController());
+    AuthController ac = Get.find<AuthController>();
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(
@@ -49,32 +50,7 @@ class SignUp extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: InkWell(
-                onTap: ac.signup,
-                child: Container(
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
+            bttomButton(ac.signup, 'Sign Up')
           ],
         ),
       ),
