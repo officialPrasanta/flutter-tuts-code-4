@@ -9,6 +9,7 @@ import 'package:four/firebase_options.dart';
 import 'package:four/view/home.dart';
 import 'package:four/view/otp.dart';
 import 'package:four/view/signup.dart';
+import 'package:four/view/splash.dart';
 import 'package:four/view/userform.dart';
 import 'package:get/get.dart';
 
@@ -35,13 +36,14 @@ class MyApp extends StatelessWidget {
       title: 'Four',
       initialBinding: InstanceBinding(),
       getPages: [
+        GetPage(name: '/SPLASH', page: () => Splash()),
         GetPage(name: '/SIGNUP', page: () => SignUp()),
         GetPage(name: '/OTP', page: () => OTP()),
         GetPage(name: '/HOME', page: () => Home()),
         GetPage(name: '/DETAILS_USER', page: () => UserDetails()),
         // GetPage(name: 'SIGNUP', page: ()=>SignUp()),
       ],
-      initialRoute: 'SIGNUP',
+      initialRoute: 'SPLASH',
     );
   }
 }

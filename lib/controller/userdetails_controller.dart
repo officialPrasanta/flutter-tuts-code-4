@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 class UserDetailsController extends GetxController {
-  AuthController ac = AuthController();
+  AuthController ac = Get.find<AuthController>();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -13,8 +13,14 @@ class UserDetailsController extends GetxController {
   void updateUser() async {
     await ac.firebase.collection('users').doc(ac.auth.currentUser!.uid).set({
       'name': nameController.text,
-      'age': ageController.text,
+      'age': int.parse(ageController.text),
     }, SetOptions(merge: true));
+
+    //for app
+    ac.userData.update((val) {
+      val!.name = nameController.text;
+      val.age = int.parse(ageController.text);
+    });
 
     Get.offAllNamed('HOME');
   }
